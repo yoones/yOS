@@ -9,13 +9,18 @@ LD		=	ld
 
 NAME		=	kernel.bin
 
-SRCS		=	kernel.c screen.c utils.c
+SRCS		=	kernel.c	\
+			screen.c	\
+			libc.c		\
+			main.c		\
+			gdt.c
 
 OBJS		=	$(SRCS:.c=.o)
 
 CFLAGS		+=	-W -Wall -Wextra
 CFLAGS		+=	-ffreestanding
 CFLAGS		+=	-m32
+CFLAGS		+=	-I include
 
 LDFLAGS		+=	--oformat binary -Ttext 1000
 LDFLAGS		+=	-m elf_i386
